@@ -27,7 +27,7 @@
 /* Navigation shifted closer to center */
 nav {
     flex-shrink: 0;
-    margin-left: 40px; /* pushes nav leftward toward center */
+    margin-left: 200px; /* pushes nav leftward toward center */
 }
 
 .navbar {

@@ -1,3 +1,19 @@
+/* Fixed Header top-left with dark transparent background */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* black with 60% opacity */
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.8rem;
+    z-index: 1100; /* above nav */
+    border-bottom-right-radius: 8px;
+    white-space: nowrap; /* keep text on one line */
+}
+
 /* Make navbar fixed at top, full width, horizontal */
 nav {
     position: fixed;

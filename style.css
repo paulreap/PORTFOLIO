@@ -5,7 +5,10 @@ body {
     padding: 50px;
 }
 .portfolio-image {
-    width: 300px;
+    max-width: 100%;  /* Image won’t overflow its container */
     height: auto;
-    /* optional: add margin or border */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px 0;
+    display: block;
 }

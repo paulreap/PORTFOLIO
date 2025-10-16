@@ -8,8 +8,9 @@
 </head>
 <body>
 
-    <header class="top-bar">
-        <div class="title">Paul Reap | GIS Professional</div>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="title">Paul Reap</div>
         <nav>
             <ul class="navbar">
                 <li><a href="#home">Home</a></li>
@@ -18,10 +19,11 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-    </header>
+    </div>
 
     <!-- Home Section -->
     <section id="home">
+        <h1>Paul Reap | GIS Professional</h1>
         <h2>Welcome</h2>
         <p>Welcome to my personal portfolio showcasing my GIS projects and skills.</p>
     </section>
@@ -29,26 +31,77 @@
     <!-- Portfolio Section -->
     <section id="portfolio">
         <h2>Portfolio</h2>
-        <p>Here is one of my GIS mapping projects:</p>
-        <div class="image-container">
-            <img src="images/MapforPaulRobFinal_FinalChanges.png" alt="Map Project Screenshot" class="portfolio-image" />
-            <div class="image-info">Reference map showing physiographic zones within the Colorado River basin.</div>
+        <p>Select a category to explore my map collections:</p>
+
+        <!-- Category cards -->
+        <div class="portfolio-categories">
+            <a href="#scientific-literature" class="category-card">
+                <img src="images/MapforPaulRobFinal_FinalChanges.png" alt="Scientific Literature Cover" />
+                <h3>Scientific Literature</h3>
+            </a>
+            <a href="#spatial-analysis" class="category-card">
+                <img src="images/NPReferenceMapDraft 2.png" alt="Spatial Analysis Cover" />
+                <h3>Spatial Analysis</h3>
+            </a>
+            <a href="#cartography" class="category-card">
+                <img src="images/NPNSContactWQRelate.png" alt="Cartography Cover" />
+                <h3>Cartography</h3>
+            </a>
         </div>
+
+        <!-- Collections -->
+
+        <!-- Scientific Literature Collection -->
+        <section id="scientific-literature" class="collection-section">
+            <h3>Scientific Literature Maps</h3>
+            <div class="image-gallery">
+                <div class="image-container">
+                    <img src="images/MapforPaulRobFinal_FinalChanges.png" alt="Scientific Map 1" class="portfolio-image" />
+                    <div class="image-info">Description for Scientific Map 1</div>
+                </div>
+                
+                <!-- Add more maps here -->
+            </div>
+        </section>
+
+        <!-- Spatial Analysis Collection -->
+        <section id="spatial-analysis" class="collection-section">
+            <h3>Spatial Analysis Maps</h3>
+            <div class="image-gallery">
+                <div class="image-container">
+                    <img src="images/Combined HomeRange maps.png" alt="Spatial Map 1" class="portfolio-image" />
+                    <div class="image-info">Description for Spatial Map 1</div>
+                </div>
+                <div class="image-container">
+                    <img src="images/NPNSContactWQRelate.png" alt="Spatial Map 2" class="portfolio-image" />
+                    <div class="image-info">Description for Spatial Map 2</div>
+                </div>
+                <div class="image-container">
+                    <img src="images/NPNSContactWQRelate1.png" alt="Spatial Map 3" class="portfolio-image" />
+                    <div class="image-info">Description for Spatial Map 2</div>
+            </div>
+        </section>
+
+        <!-- Cartography Collection (Placeholder) -->
+        <section id="cartography" class="collection-section">
+            <h3>Cartography Maps (Coming Soon)</h3>
+            <p>Stay tuned for upcoming map collections in cartography.</p>
+        </section>
     </section>
 
     <!-- Resume Section -->
     <section id="resume">
         <h2>Resume</h2>
         <p>
-            <a href="files/Paul Reap.pdf" target="_blank">RESUME</a>
+            <a href="files/Paul Reap.pdf" target="_blank">Click here to view or download my resume</a>
         </p>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2>Please feel free to reach out via email and check out my linked in profile below</h2>
+        <h2>Contact Me</h2>
         <p>Email: <a href="mailto:paul.c.reap@gmail.com">paul.c.reap@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/paul-reap-37a594166" target="_blank" rel="noopener noreferrer">linkedin.com/in/paul-reap-37a594166</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/paul-reap-37a594166" target="_blank">linkedin.com/in/paul-reap-37a594166</a></p>
     </section>
 
 </body>

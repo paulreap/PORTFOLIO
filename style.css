@@ -156,6 +156,22 @@ section {
     margin: auto;
 }
 
+/* Links for Resume, Email, LinkedIn */
+section#resume a,
+section#contact a {
+    color: #A3B18A;       /* earthtone greenish color */
+    font-size: 1.3rem;   /* bigger font */
+    text-decoration: none; /* no underline */
+    font-weight: 600;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+section#resume a:hover,
+section#contact a:hover {
+    color: #fff;
+    text-decoration: underline; /* underline only on hover */
+}
+
 /* Responsive tweaks */
 @media (max-width: 768px) {
     .top-bar {

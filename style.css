@@ -1,4 +1,4 @@
-/* Top bar with title left, nav right */
+/* Top bar with title left, nav right (nav shifted closer to center) */
 .top-bar {
     position: fixed;
     top: 0;
@@ -8,7 +8,7 @@
     background-color: rgba(0, 0, 0, 0.75);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start; /* changed to flex-start for better control */
     padding: 0 30px;
     box-sizing: border-box;
     z-index: 1100;
@@ -24,9 +24,10 @@
     white-space: nowrap;
 }
 
-/* Navigation on right */
+/* Navigation shifted closer to center */
 nav {
     flex-shrink: 0;
+    margin-left: 40px; /* pushes nav leftward toward center */
 }
 
 .navbar {
@@ -40,15 +41,15 @@ nav {
 .navbar li a {
     color: white;
     font-weight: 600;
-    font-size: 1.1rem; /* slightly smaller font */
+    font-size: 1.3rem; /* bigger font */
     text-decoration: none;
-    padding: 12px 10px;
+    padding: 12px 14px;
     transition: background-color 0.3s ease;
     border-radius: 6px;
 }
 
 .navbar li a:hover {
-    background-color: rgba(163, 177, 138, 0.8); /* earthtone highlight */
+    background-color: rgba(163, 177, 138, 0.8);
     color: black;
 }
 
@@ -158,6 +159,7 @@ section {
         height: auto;
         padding: 10px 20px;
         gap: 8px;
+        justify-content: center; /* center items on small screens */
     }
 
     .title {
@@ -168,6 +170,7 @@ section {
 
     nav {
         width: 100%;
+        margin-left: 0;
     }
 
     .navbar {

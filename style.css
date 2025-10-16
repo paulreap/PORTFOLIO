@@ -97,15 +97,23 @@ nav {
 }
 
 /* Body styling */
-body {
-    font-family: 'Inter', sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
-    padding-top: 160px; /* enough for 80px header + breathing room */
+    font-family: 'Inter', sans-serif;
+    font-size: 18px; /* Base font size */
     background: linear-gradient(-45deg, #7A5C42, #A3B18A, #588157, #3A5A40, #2C6E91);
     background-size: 400% 400%;
     animation: gradientEarthtone 20s ease infinite;
     color: #fff;
-    font-size: 18px; /* Base font size */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 160px; /* enough for 80px header + breathing room */
+}
+
+body > main {
+    flex: 1 0 auto; /* Main content grows and footer pushed down */
 }
 
 /* Smooth scrolling */
@@ -221,33 +229,48 @@ a {
     pointer-events: auto;
 }
 
-/* Resume and Contact Section styling */
-#contact, #resume {
-    margin: 50px auto;
-    max-width: 700px;
+/* Footer container */
+#site-footer {
+    background-color: rgba(30, 30, 30, 0.9); /* Darker background for contrast */
+    color: #dcdcdc;
+    padding: 40px 20px;
+    text-align: center;
     font-family: 'Inter', sans-serif;
+    margin-top: 80px; /* space above footer */
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
+}
+
+/* Contact and Resume sections inside footer */
+#site-footer #contact, 
+#site-footer #resume {
+    max-width: 700px;
+    margin: 0 auto 30px auto;
     font-size: 1.6rem;
-    color: #fff;
+    color: #dcdcdc;
 }
 
-/* Put Contact first, Resume below */
-#contact {
-    margin-bottom: 30px;
+#site-footer #resume {
+    margin-bottom: 0;
 }
 
-/* Links in contact and resume without underline and bigger font */
-#resume a, #contact a {
+/* Links inside footer */
+#site-footer a {
     color: #a3b18a;
     font-weight: 600;
     text-decoration: none;
-    font-size: 1.6rem;
     transition: color 0.3s ease;
 }
 
-#resume a:hover,
-#contact a:hover {
+#site-footer a:hover {
     color: #f0f0f0;
     text-decoration: underline;
+}
+
+/* Footer headings */
+#site-footer h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 15px;
 }
 
 /* Responsive tweaks */
@@ -310,6 +333,20 @@ a {
 
     body {
         padding-top: 140px;
+    }
+    
+    /* Footer adjustments for small screens */
+    #site-footer {
+        padding: 30px 15px;
+    }
+
+    #site-footer #contact,
+    #site-footer #resume {
+        font-size: 1.4rem;
+    }
+
+    #site-footer h2 {
+        font-size: 1.6rem;
     }
 }
 

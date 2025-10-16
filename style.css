@@ -1,36 +1,23 @@
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(-45deg, #7A5C42, #A3B18A, #588157, #3A5A40, #2C6E91);
-    background-size: 400% 400%;
-    animation: gradientEarthtone 20s ease infinite;
-    color: #fff;
+/* Make navbar fixed at top, full width, horizontal */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* Portfolio Image */
-.portfolio-image {
-    max-width: 50%;  /* Image won’t overflow its container */
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin: 20px 0;
-    display: block;
-}
-
-/* Navigation Bar */
 .navbar {
     list-style: none;
     margin: 0;
     padding: 0;
-    background-color: #333;
-    overflow: hidden;
-    display: flex;
+    display: flex;             /* horizontal layout */
     justify-content: center;
 }
 
 .navbar li {
-    display: inline;
+    margin: 0 15px; /* spacing between nav items */
 }
 
 .navbar li a {
@@ -48,6 +35,32 @@ body {
 
 .navbar li a:hover {
     background-color: #555;
+}
+
+/* Add some padding on top so content isn't hidden behind fixed navbar */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding-top: 56px;  /* height of nav */
+    background: linear-gradient(-45deg, #7A5C42, #A3B18A, #588157, #3A5A40, #2C6E91);
+    background-size: 400% 400%;
+    animation: gradientEarthtone 20s ease infinite;
+    color: #fff;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Portfolio Image */
+.portfolio-image {
+    max-width: 50%;  /* Image won’t overflow its container */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px 0;
+    display: block;
 }
 
 /* All other links */
@@ -75,4 +88,11 @@ a:hover {
     100% {
         background-position: 0% 50%;
     }
+}
+
+/* Section Styling */
+section {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: auto;
 }

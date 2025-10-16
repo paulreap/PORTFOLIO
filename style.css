@@ -1,14 +1,16 @@
 body {
-    background-color: #5d7946; /* fallback color */
-    background-image: url('images/_DSC4482.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    color: white; /* make text readable on dark background */
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(-45deg, #7A5C42, #A3B18A, #588157, #3A5A40, #2C6E91);
+    background-size: 400% 400%;
+    animation: gradientEarthtone 20s ease infinite;
+    color: #fff;
 }
 
+
 .portfolio-image {
-    max-width: 100%;  /* Image won’t overflow its container */
+    max-width: 50%;  /* Image won’t overflow its container */
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);

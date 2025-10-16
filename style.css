@@ -1,19 +1,4 @@
-/* ==== General Body and Smooth Scroll ==== */
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding-top: 160px; /* space for fixed top bar */
-    background: linear-gradient(-45deg, #7A5C42, #A3B18A, #588157, #3A5A40, #2C6E91);
-    background-size: 400% 400%;
-    animation: gradientEarthtone 20s ease infinite;
-    color: #fff;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* ==== Top bar (title + nav) ==== */
+/* Top bar with title left, nav right */
 .top-bar {
     position: fixed;
     top: 0;
@@ -39,10 +24,10 @@ html {
     white-space: nowrap;
 }
 
-/* Navigation styling */
+/* Navigation shifted closer to center */
 nav {
     flex-shrink: 0;
-    margin-left: 40px; /* pushes nav leftward toward center */
+    margin-left: 40px;
 }
 
 .navbar {
@@ -53,134 +38,153 @@ nav {
     gap: 20px;
 }
 
-/* Nav links */
-.navbar li a {
+/* Remove bullets from dropdown too */
+.navbar, .dropdown-menu {
+    list-style: none;
+}
+
+/* Dropdown Menu Hidden by Default */
+.dropdown-menu {
+    position: absolute;
+    background-color: rgba(0,0,0,0.85);
+    margin-top: 8px;
+    border-radius: 6px;
+    display: none;
+    min-width: 200px;
+    padding: 8px 0;
+    z-index: 1200;
+}
+
+/* Show dropdown on hover of Portfolio tab */
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+/* Dropdown items */
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
     color: white;
     font-weight: 600;
     font-size: 1.3rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu li a:hover {
+    background-color: rgba(163, 177, 138, 0.8);
+    color: black;
+}
+
+/* Main nav links */
+.navbar li a {
+    color: white;
+    font-weight: 700;
+    font-size: 1.5rem; /* Increased font size */
     text-decoration: none;
     padding: 12px 14px;
     transition: background-color 0.3s ease;
     border-radius: 6px;
 }
 
-/* Hover effect on nav links */
+/* Nav hover effect */
 .navbar li a:hover {
     background-color: rgba(163, 177, 138, 0.8);
     color: black;
 }
 
-/* ==== Dropdown Menu ==== */
-.navbar .dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: rgba(30, 30, 30, 0.95);
-    border-radius: 6px;
-    padding: 8px 0;
-    margin-top: 8px;
-    min-width: 190px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-    z-index: 1200;
+/* Body padding to avoid header overlap */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding-top: 160px; /* enough for 80px header + breathing room */
+    background: linear-gradient(-45deg, #7A5C42, #A3B18A, #588157, #3A5A40, #2C6E91);
+    background-size: 400% 400%;
+    animation: gradientEarthtone 20s ease infinite;
+    color: #fff;
 }
 
-.navbar .dropdown {
-    position: relative;
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
 }
 
-/* Show dropdown only on hover */
-.navbar .dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-/* Dropdown links */
-.dropdown-menu li a {
-    display: block;
-    padding: 10px 20px;
-    font-weight: 500;
-    font-size: 1.1rem;
-    color: white;
-    white-space: nowrap;
-}
-
-.dropdown-menu li a:hover {
-    background-color: rgba(163, 177, 138, 0.85);
-    color: black;
-}
-
-/* ==== Section Titles & Text ==== */
-h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 3.5rem;
-    margin: 0 0 20px 0;
+/* Home section font sizes doubled */
+#home h1 {
+    font-size: 4.8rem;
+    margin-bottom: 0.2em;
 }
 
 #home h2 {
-    font-size: 2.1rem; /* 40% bigger */
+    font-size: 4.2rem;
 }
 
 #home p {
-    font-size: 1.25rem; /* 40% bigger */
+    font-size: 2.5rem;
+    max-width: 900px;
 }
 
-/* Other sections font size */
+/* Other sections font sizes */
 h2:not(#home h2),
 section p,
 a {
-    font-size: 1.25rem;
-    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem; /* increased by ~25% */
 }
 
-/* ==== Portfolio Categories on Home ==== */
+/* Portfolio Categories container */
 .portfolio-categories {
     display: flex;
     justify-content: center;
     gap: 40px;
-    flex-wrap: wrap;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
-.portfolio-categories .category-card {
+/* Portfolio category card */
+.category-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    max-width: 280px;
-    text-decoration: none;
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 2.2rem; /* bigger titles */
+    text-decoration: none;
     transition: transform 0.3s ease;
 }
 
-.portfolio-categories .category-card img {
-    width: 280px; /* bigger images */
+/* Category images bigger */
+.category-card img {
+    width: 350px; /* significantly larger */
+    max-width: 100%;
     border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-    margin-bottom: 12px;
-    transition: transform 0.3s ease;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    margin-bottom: 15px;
 }
 
-.portfolio-categories .category-card:hover,
-.portfolio-categories .category-card:focus {
-    transform: scale(1.05);
+/* Hover scale for category cards */
+.category-card:hover,
+.category-card:focus {
+    transform: scale(1.1);
     outline: none;
 }
 
-/* ==== Portfolio Page Maps ==== */
+/* Portfolio pages map container */
 .image-container {
     position: relative;
     margin: 40px auto;
-    max-width: 75%; /* maps are 75% of page width */
+    max-width: 112.5%; /* 50% bigger than 75% (1.5 * 75% = 112.5%) but capped at 100% below */
+    width: 100%;
     cursor: zoom-in;
     transition: transform 0.3s ease;
 }
 
-.portfolio-image {
+.image-container > .portfolio-image {
     width: 100%;
+    max-width: 100%; /* never overflow container */
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
     display: block;
     transition: transform 0.3s ease;
 }
@@ -191,7 +195,7 @@ a {
     z-index: 10;
 }
 
-/* Pop-up info on hover */
+/* Pop-up info */
 .image-info {
     position: absolute;
     bottom: 15px;
@@ -200,7 +204,7 @@ a {
     color: #eee;
     padding: 8px 12px;
     border-radius: 6px;
-    font-size: 1rem;
+    font-size: 1.15rem; /* increased 15% */
     max-width: 90%;
     opacity: 0;
     pointer-events: none;
@@ -214,44 +218,89 @@ a {
     pointer-events: auto;
 }
 
-/* ==== Resume and Contact Sections ==== */
+/* Resume and Contact Section styling */
 #resume, #contact {
     margin: 50px auto;
     max-width: 700px;
     font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+    color: #fff;
 }
 
-/* Resume link styling */
-#resume a {
+/* Links in contact and resume without underline and bigger font */
+#resume a, #contact a {
     color: #a3b18a;
     font-weight: 600;
     text-decoration: none;
+    font-size: 1.6rem;
+    transition: color 0.3s ease;
 }
 
-#resume a:hover {
+#resume a:hover,
+#contact a:hover {
+    color: #f0f0f0;
     text-decoration: underline;
 }
 
-/* ==== Animations ==== */
-@keyframes gradientEarthtone {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-}
-
-/* ==== Responsive ==== */
+/* Responsive tweaks */
 @media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 20px;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .title {
+        font-size: 2.4rem;
+        white-space: normal;
+        text-align: center;
+    }
+
+    nav {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .navbar {
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .navbar li a {
+        font-size: 1.2rem;
+        padding: 8px 10px;
+    }
+
+    /* Dropdown menu on small screens always visible */
+    .dropdown-menu {
+        position: static;
+        background: none;
+        box-shadow: none;
+        padding: 0;
+        display: block !important;
+    }
+
+    .dropdown-menu li a {
+        padding: 6px 10px;
+        font-size: 1.1rem;
+        color: white;
+    }
+
+    /* Portfolio categories stacked vertically */
     .portfolio-categories {
         flex-direction: column;
-        align-items: center;
+        gap: 30px;
     }
 
-    .portfolio-categories .category-card img {
-        width: 90vw;
-        max-width: 300px;
+    .category-card img {
+        width: 100%;
+        max-width: 350px;
     }
 
-    .image-container {
-        max-width: 90%;
+    body {
+        padding-top: 140px;
     }
 }

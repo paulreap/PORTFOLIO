@@ -241,13 +241,27 @@ a {
 }
 
 /* Contact and Resume sections inside footer */
-#site-footer #contact, 
+#site-footer #contact,
 #site-footer #resume {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto 30px auto;
     font-size: 1.6rem;
     color: #dcdcdc;
 }
+
+/* New flex layout for contact info */
+#site-footer #contact .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+#site-footer #contact .contact-links p {
+    margin: 0;
+}
+
 
 #site-footer #resume {
     margin-bottom: 0;

@@ -1,4 +1,20 @@
-/* Top bar with title left, nav right (nav shifted closer to center) */
+/* Fonts */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding-top: 160px;
+    background: linear-gradient(-45deg, #7A5C42, #A3B18A, #588157, #3A5A40, #2C6E91);
+    background-size: 400% 400%;
+    animation: gradientEarthtone 20s ease infinite;
+    color: #fff;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Top bar */
 .top-bar {
     position: fixed;
     top: 0;
@@ -16,7 +32,7 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
-/* Title on left */
+/* Title */
 .title {
     font-weight: 700;
     font-size: 2.8rem;
@@ -24,10 +40,10 @@
     white-space: nowrap;
 }
 
-/* Navigation shifted closer to center */
+/* Navigation */
 nav {
     flex-shrink: 0;
-    margin-left: 40px; /* pushes nav leftward toward center */
+    margin-left: 40px;
 }
 
 .navbar {
@@ -41,7 +57,7 @@ nav {
 .navbar li a {
     color: white;
     font-weight: 600;
-    font-size: 1.3rem; /* bigger font */
+    font-size: 1.4rem;
     text-decoration: none;
     padding: 12px 14px;
     transition: background-color 0.3s ease;
@@ -53,29 +69,20 @@ nav {
     color: black;
 }
 
-/* Body padding to avoid header overlap */
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding-top: 160px; /* enough for 80px header + some breathing room */
-    background: linear-gradient(-45deg, #7A5C42, #A3B18A, #588157, #3A5A40, #2C6E91);
-    background-size: 400% 400%;
-    animation: gradientEarthtone 20s ease infinite;
-    color: #fff;
-}
-
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
+/* Section styling */
+section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
 }
 
 /* Home section font sizes */
 #home h2 {
-    font-size: 2.1rem; /* 40% larger */
+    font-size: 2.1rem;
 }
 
 #home p {
-    font-size: 1.25rem; /* 40% larger */
+    font-size: 1.25rem;
 }
 
 /* Other sections font sizes */
@@ -85,7 +92,7 @@ a {
     font-size: 1.25rem;
 }
 
-/* Portfolio categories container */
+/* Portfolio Categories - cards */
 .portfolio-categories {
     display: flex;
     flex-wrap: wrap;
@@ -95,7 +102,6 @@ a {
     margin-bottom: 40px;
 }
 
-/* Each category card */
 .category-card {
     display: flex;
     flex-direction: column;
@@ -120,12 +126,12 @@ a {
 }
 
 .category-card h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
     text-align: center;
 }
 
-/* Hover effect for category cards */
 .category-card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,0.6);
@@ -135,39 +141,34 @@ a {
     transform: scale(1.08);
 }
 
-/* Collection sections image gallery */
-.collection-section {
-    margin-top: 60px;
-}
-
+/* Image Gallery Grid for category pages */
 .image-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    justify-items: center;
 }
 
 /* Portfolio Image Container */
 .image-container {
     position: relative;
-    display: inline-block;
     cursor: pointer;
     overflow: visible;
+    max-width: 100%;
 }
 
-/* Portfolio image styling with zoom on hover */
 .portfolio-image {
-    max-width: 69%; /* increased by 15% */
+    width: 100%;
+    max-width: 400px;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin: 20px 0;
-    display: block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     transition: transform 0.3s ease;
+    display: block;
 }
 
 .image-container:hover .portfolio-image {
-    transform: scale(1.2);
+    transform: scale(1.15);
     z-index: 10;
 }
 
@@ -177,7 +178,7 @@ a {
     bottom: 10px;
     left: 10px;
     background: rgba(30, 30, 30, 0.85);
-    backdrop-filter: blur(6px); /* subtle blur behind */
+    backdrop-filter: blur(6px);
     color: #fff;
     padding: 12px 18px;
     border-radius: 10px;
@@ -185,7 +186,7 @@ a {
     visibility: hidden;
     transition: opacity 0.35s ease, transform 0.35s ease;
     max-width: 280px;
-    font-size: 1.035rem; /* 15% increase from 0.9rem */
+    font-size: 1.05rem;
     pointer-events: none;
     z-index: 20;
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
@@ -197,6 +198,19 @@ a {
     opacity: 1;
     visibility: visible;
     transform: scale(1);
+}
+
+/* Back link style */
+.back-link {
+    color: #a3b18a;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+    color: #e6e6e6;
 }
 
 /* Gradient animation */
@@ -212,30 +226,7 @@ a {
     }
 }
 
-/* Section styling */
-section {
-    padding: 40px 20px;
-    max-width: 800px;
-    margin: auto;
-}
-
-/* Links formatting in Contact and Resume sections */
-section#contact a,
-section#resume a {
-    font-size: 1.35rem;
-    color: #a3b18a;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-section#contact a:hover,
-section#resume a:hover {
-    color: #e6e6e6;
-    text-decoration: none;
-}
-
-/* Responsive tweaks */
+/* Responsive nav & title adjustments for smaller screens */
 @media (max-width: 768px) {
     .top-bar {
         flex-direction: column;
@@ -253,4 +244,25 @@ section#resume a:hover {
 
     nav {
         width: 100%;
-       
+        margin-left: 0;
+    }
+
+    .navbar {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .navbar li a {
+        font-size: 1.1rem;
+        padding: 8px 10px;
+    }
+
+    .portfolio-categories {
+        justify-content: center;
+    }
+
+    .category-card {
+        width: 90%;
+        max-width: 350px;
+    }
+}

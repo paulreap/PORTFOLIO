@@ -4,3 +4,8 @@ body {
     text-align: center;
     padding: 50px;
 }
+.portfolio-image {
+    width: 300px;
+    height: auto;
+    /* optional: add margin or border */
+}

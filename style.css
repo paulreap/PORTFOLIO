@@ -1,9 +1,12 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 50px;
+    background-color: #5d7946; /* fallback color */
+    background-image: url('images/_DSC4482.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white; /* make text readable on dark background */
 }
+
 .portfolio-image {
     max-width: 100%;  /* Image won’t overflow its container */
     height: auto;

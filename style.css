@@ -8,8 +8,8 @@
     background-color: rgba(0, 0, 0, 0.75);
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    padding: 0 30px;
+    justify-content: space-between; /* Title left, nav right */
+    padding: 0 40px;
     box-sizing: border-box;
     z-index: 1100;
     font-family: 'Inter', sans-serif;
@@ -24,12 +24,12 @@
     white-space: nowrap;
 }
 
-/* Navigation shifted closer to center */
+/* Navigation container */
 nav {
-    flex-shrink: 0;
-    margin-left: 40px;
+    margin-left: 0; /* Reset margin */
 }
 
+/* Navbar styling */
 .navbar {
     list-style: none;
     margin: 0;
@@ -38,8 +38,10 @@ nav {
     gap: 20px;
 }
 
-/* Remove bullets from dropdown too */
-.navbar, .dropdown-menu {
+/* Remove bullets from dropdown and navbar */
+.navbar, 
+.dropdown-menu,
+.dropdown-menu li {
     list-style: none;
 }
 
@@ -94,7 +96,7 @@ nav {
     color: black;
 }
 
-/* Body padding to avoid header overlap */
+/* Body styling */
 body {
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -103,6 +105,7 @@ body {
     background-size: 400% 400%;
     animation: gradientEarthtone 20s ease infinite;
     color: #fff;
+    font-size: 18px; /* Base font size */
 }
 
 /* Smooth scrolling */
@@ -136,8 +139,8 @@ a {
 .portfolio-categories {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-top: 40px;
+    gap: 60px; /* slightly larger gap */
+    margin-top: 60px;
 }
 
 /* Portfolio category card */
@@ -149,18 +152,18 @@ a {
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 2.2rem; /* bigger titles */
+    font-size: 2.8rem; /* bigger titles */
     text-decoration: none;
     transition: transform 0.3s ease;
 }
 
 /* Category images bigger */
 .category-card img {
-    width: 350px; /* significantly larger */
+    width: 450px; /* significantly larger */
     max-width: 100%;
     border-radius: 12px;
     box-shadow: 0 6px 14px rgba(0,0,0,0.3);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 /* Hover scale for category cards */
@@ -174,7 +177,7 @@ a {
 .image-container {
     position: relative;
     margin: 40px auto;
-    max-width: 112.5%; /* 50% bigger than 75% (1.5 * 75% = 112.5%) but capped at 100% below */
+    max-width: 75%; /* bigger maps on portfolio pages */
     width: 100%;
     cursor: zoom-in;
     transition: transform 0.3s ease;
@@ -182,7 +185,7 @@ a {
 
 .image-container > .portfolio-image {
     width: 100%;
-    max-width: 100%; /* never overflow container */
+    max-width: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 14px rgba(0,0,0,0.25);
     display: block;
@@ -219,12 +222,17 @@ a {
 }
 
 /* Resume and Contact Section styling */
-#resume, #contact {
+#contact, #resume {
     margin: 50px auto;
     max-width: 700px;
     font-family: 'Inter', sans-serif;
     font-size: 1.6rem;
     color: #fff;
+}
+
+/* Put Contact first, Resume below */
+#contact {
+    margin-bottom: 30px;
 }
 
 /* Links in contact and resume without underline and bigger font */
@@ -302,5 +310,18 @@ a {
 
     body {
         padding-top: 140px;
+    }
+}
+
+/* Background gradient animation */
+@keyframes gradientEarthtone {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
     }
 }

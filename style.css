@@ -293,18 +293,7 @@ section {
    PORTFOLIO MAP ZOOM
 ========================= */
 
-#portfolio-items {
-    max-width: 1100px;
-    margin: 80px auto 100px auto;
-    padding: 0 20px;
-}
-
-.portfolio-title {
-    font-size: 3.2rem;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
+/* Portfolio gallery */
 .image-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -315,24 +304,37 @@ section {
 .image-container {
     flex: 1 1 45%;
     max-width: 45%;
+    border: 2px solid #ccc9b6; /* USGS quad border */
+    border-radius: 4px;
+    padding: 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    background: #f8f7f2;
+    overflow: hidden; /* ensures image zoom doesn't overflow container */
 }
 
-/* Zoom wrapper */
 .map-zoom {
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 2px;
+    background-color: #f8f7f2;
 }
 
-/* Image */
 .map-zoom img {
     width: 100%;
     height: auto;
+    transform: scale(1); /* default scale = normal */
     transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Hover magnification */
+/* Hover zoom — only on hover */
 .image-container:hover .map-zoom img {
-    transform: scale(1.6);
+    transform: scale(1.25); /* subtle magnification */
+}
+
+.image-info {
+    color: #5c5b4f; /* USGS caption color */
+    font-size: 0.95rem;
+    margin-top: 0.6rem;
+    line-height: 1.4;
 }
 
 @media (max-width: 900px) {
@@ -341,6 +343,7 @@ section {
         max-width: 100%;
     }
 }
+
 /* =========================
    CONTACT & RESUME
 ========================= */

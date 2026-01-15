@@ -12,15 +12,31 @@ html {
 
 body {
     margin: 0;
-    padding-top: 96px; /* space for fixed header */
+    padding-top: 96px;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: #ffffff;
+    color: #f5f5f2;
 
-    /* Sleek static background */
-    background-color: #1f2a24;
+    /* NPS-style cartography background */
+    background:
+        radial-gradient(
+            ellipse at top,
+            rgba(255, 255, 255, 0.06),
+            transparent 60%
+        ),
+        radial-gradient(
+            ellipse at bottom,
+            rgba(0, 0, 0, 0.25),
+            transparent 70%
+        ),
+        linear-gradient(
+            180deg,
+            #2f3e34,
+            #1f2922
+        );
 }
+
 
 /* =========================
    TYPOGRAPHY
@@ -55,10 +71,11 @@ p {
 ========================= */
 
 section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 3rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
+
 
 /* =========================
    TOP NAVIGATION
@@ -178,9 +195,16 @@ section {
 
 .portfolio-categories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(3, 1fr); /* all side-by-side */
+    gap: 48px;
     margin-top: 3rem;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .portfolio-categories {
+        grid-template-columns: 1fr;
+    }
 }
 
 .category-card {

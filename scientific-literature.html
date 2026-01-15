@@ -28,16 +28,18 @@
         </nav>
     </div>
 
-    <section id="portfolio-items" style="max-width: 1100px; margin: 80px auto 100px auto; padding: 0 20px; color: white; font-family: 'Montserrat', sans-serif;">
-        <h2 style="font-size: 3.6rem; margin-bottom: 40px;">Scientific Literature Maps</h2>
+<section id="portfolio-items">
+    <h2 class="portfolio-title">Scientific Literature</h2>
 
+    <div class="image-gallery">
         <div class="image-container">
-            <img src="images/MapforPaulRobFinal_FinalChanges.png" alt="Map 1 - Description" class="portfolio-image" />
-            <div class="image-info">Map of geographic zones of Arizona; dropshadow area represents the Gila River Basin.</div>
+            <div class="map-zoom">
+                <img src="images/MapforPaulRobFinal_FinalChanges.png" alt="Map of San Tan Regional Park trails and elevation profiles">
+            </div>
+            <div class="image-info">
+                Map of geographic zones in Arizona; dropshadowed area represents the Gila River Basin.
+            </div>
         </div>
-
-        <!-- Add more maps below similarly -->
-
     </section>
 
     <footer id="site-footer">
@@ -50,7 +52,33 @@
 </section>
 
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const zoomContainers = document.querySelectorAll('.map-zoom');
+    const scale = 2.5; // adjust zoom level for maps
 
+    zoomContainers.forEach(container => {
+        const img = container.querySelector('img');
+
+        container.addEventListener('mousemove', e => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const xPercent = x / rect.width * 100;
+            const yPercent = y / rect.height * 100;
+
+            img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+            img.style.transform = `scale(${scale})`;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            img.style.transform = 'scale(1)';
+            img.style.transformOrigin = 'center center';
+        });
+    });
+});
+</script>
 
 </body>
 </html>

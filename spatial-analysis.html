@@ -28,25 +28,39 @@
         </nav>
     </div>
 
-    <section id="portfolio-items" style="max-width: 1100px; margin: 80px auto 100px auto; padding: 0 20px; color: white; font-family: 'Montserrat', sans-serif;">
-        <h2 style="font-size: 3.6rem; margin-bottom: 40px;">Spatial Analysis Maps</h2>
+    
+<section id="portfolio-items">
+    <h2 class="portfolio-title">Cartography</h2>
 
-        <div class="image-gallery" style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center;">
-            <div class="image-container" style="flex: 1 1 45%; max-width: 45%;">
-                <img src="images/NPNSContactWQRelate.png" alt="Spatial Map 1" class="portfolio-image" />
-                <div class="image-info">Home range map of tagged Northern Pike in Utah Lake; overlaying IDW analysis of water quality parameters during non-spawning season.</div>
+    <div class="image-gallery">
+        <div class="image-container">
+            <div class="map-zoom">
+                <img src="images/NPSSContactWQRelate1.png" alt="Map of San Tan Regional Park trails and elevation profiles">
             </div>
-            <div class="image-container" style="flex: 1 1 45%; max-width: 45%;">
-                <img src="images/NPSSContactWQRelate1.png" alt="Spatial Map 2" class="portfolio-image" />
-                <div class="image-info">Home range map of tagged Northern Pike in Utah Lake; overlaying IDW analysis of water quality parameters during spawning season.</div>
-            </div>
-            <div class="image-container" style="flex: 1 1 45%; max-width: 45%;">
-                <img src="images/Combined HomeRange maps.png" alt="Spatial Map 3" class="portfolio-image" />
-                <div class="image-info">Combined home range analysis of species movement.</div>
+            <div class="image-info">
+                Map of San Tan Regional Park trails and elevation profiles.
             </div>
         </div>
-    </section>
 
+        <div class="image-container">
+            <div class="map-zoom">
+                <img src="images/NPNSContactWQRelate.png" alt="Hydrologic watershed map of the Pacific Northwest">
+            </div>
+            <div class="image-info">
+                Hydrologic map of the most prominent watershed in the Pacific Northwest; rivers symbolized by stream order.
+            </div>
+        </div>
+
+        <div class="image-container">
+            <div class="map-zoom">
+                <img src="images/Combined HomeRange maps.png" alt="Shaded relief map of Yellowstone National Park">
+            </div>
+            <div class="image-info">
+                Shaded relief map of Yellowstone National Park.
+            </div>
+        </div>
+    </div>
+</section>
     <footer id="site-footer">
     <section id="contact">
     <h2>Contact Me</h2>
@@ -58,6 +72,33 @@
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const zoomContainers = document.querySelectorAll('.map-zoom');
+    const scale = 2.5; // adjust zoom level for maps
+
+    zoomContainers.forEach(container => {
+        const img = container.querySelector('img');
+
+        container.addEventListener('mousemove', e => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const xPercent = x / rect.width * 100;
+            const yPercent = y / rect.height * 100;
+
+            img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+            img.style.transform = `scale(${scale})`;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            img.style.transform = 'scale(1)';
+            img.style.transformOrigin = 'center center';
+        });
+    });
+});
+</script>
 
 </body>
 </html>

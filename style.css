@@ -82,7 +82,7 @@ h2 {
 }
 
 p {
-    color: #e8e8e2;
+    color: #353b31;
 }
 
 .scale-divider {
@@ -297,6 +297,20 @@ section {
     margin-top: 0.75rem;
     font-size: 0.95rem;
     color: #e0e0e0;
+}
+.map-zoom {
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.map-zoom img {
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+
+/* Hover zoom */
+.category-card:hover .map-zoom img {
+    transform: scale(1.6);
 }
 
 /* =========================

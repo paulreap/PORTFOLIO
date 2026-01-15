@@ -77,5 +77,22 @@
         </p>
     </section>
 
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Mobile dropdown toggle
+    const dropdowns = document.querySelectorAll('.navbar .dropdown > a');
+
+    dropdowns.forEach(drop => {
+        drop.addEventListener('click', e => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const parent = drop.parentElement;
+                parent.classList.toggle('open');
+            }
+        });
+    });
+});
+</script>
+
 </body>
 </html>

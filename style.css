@@ -135,27 +135,62 @@ section {
     white-space: nowrap;
 }
 
-.navbar {
-    list-style: none;
-    display: flex;
-    gap: 18px;
+/* =========================
+   DROPDOWN NAVIGATION
+========================= */
+
+.navbar li {
+    position: relative; /* required for absolute submenu positioning */
 }
 
-.navbar li a {
+.dropdown-menu {
+    position: absolute;
+    top: 100%;  /* below parent */
+    left: 0;
+    background-color: rgba(0,0,0,0.9);
+    padding: 6px 0;
+    border-radius: 6px;
+    min-width: 200px;
+    display: none;   /* hidden by default */
+    z-index: 1000;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 8px 16px;
+    font-size: 0.95rem;
     color: #ffffff;
     text-decoration: none;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 6px 10px;
-    border-radius: 4px;
-    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.navbar li a:hover {
-    background-color: rgba(163, 177, 138, 0.8);
+.dropdown-menu li a:hover {
+    background-color: rgba(163,177,138,0.8);
     color: #000;
 }
 
+/* Show menu on hover for desktop */
+.navbar li.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Mobile: make dropdown clickable */
+@media (max-width: 768px) {
+    .dropdown > a::after {
+        content: " ▾";
+        float: right;
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: none;
+        margin-top: 8px;
+        background-color: rgba(0,0,0,0.9);
+    }
+
+    .dropdown.open .dropdown-menu {
+        display: block;
+    }
+}
 /* =========================
    PORTFOLIO CATEGORIES
 ========================= */

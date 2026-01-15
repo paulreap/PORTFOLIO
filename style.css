@@ -21,7 +21,7 @@ body {
     /* USGS paper base */
     background-color: #e6e4d9;
 
-    /* Contour SVG overlay */
+    /* Contour SVG overlay + terrain shading */
     background-image:
         url("images/San Tan Regional Park.svg"),
         radial-gradient(circle at top, rgba(255,255,255,0.6), transparent 60%),
@@ -105,6 +105,7 @@ p, a {
     min-width: 220px;
     border-radius: 6px;
     padding: 6px 0;
+    z-index: 10001;
 }
 
 .dropdown-menu li a {
@@ -155,11 +156,34 @@ section {
     height: auto;
     border-radius: 6px;
 }
-/* Portfolio map container */
-.image-container {
-    max-width: 1100px;     /* keeps maps reasonable */
-    margin: 0 auto 3rem auto;
+
+/* =========================
+   PORTFOLIO MAP LAYOUT
+========================= */
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    justify-content: center;
 }
+
+.image-container {
+    flex: 1 1 45%;
+    max-width: 45%;
+    margin-bottom: 3rem;
+    background: #f8f7f2;
+    border: 2px solid #cfcbb8;
+    border-radius: 4px;
+    padding: 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+.map-zoom {
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
 .map-zoom img {
     display: block;
     width: 100%;
@@ -173,6 +197,13 @@ section {
 /* =========================
    RESPONSIVE
 ========================= */
+
+@media (max-width: 900px) {
+    .image-container {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
 
 @media (max-width: 768px) {
     .navbar {

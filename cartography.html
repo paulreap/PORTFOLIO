@@ -8,6 +8,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Mobile dropdown toggle
+    const dropdowns = document.querySelectorAll('.navbar .dropdown > a');
+
+    dropdowns.forEach(drop => {
+        drop.addEventListener('click', e => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const parent = drop.parentElement;
+                parent.classList.toggle('open');
+            }
+        });
+    });
+});
+</script>
 <body>
 
     <div class="top-bar">
@@ -80,23 +96,6 @@
         <p>LinkedIn: <a href="https://www.linkedin.com/in/paul-reap-37a594166" target="_blank">linkedin.com/in/paul-reap-37a594166</a></p>
     </div>
 </section>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    // Mobile dropdown toggle
-    const dropdowns = document.querySelectorAll('.navbar .dropdown > a');
-
-    dropdowns.forEach(drop => {
-        drop.addEventListener('click', e => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                const parent = drop.parentElement;
-                parent.classList.toggle('open');
-            }
-        });
-    });
-});
-</script>
 
 
 <script>

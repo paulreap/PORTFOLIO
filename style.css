@@ -1,5 +1,5 @@
 /* =========================
-   GLOBAL RESET & BASE
+   RESET
 ========================= */
 
 * {
@@ -8,52 +8,28 @@
     padding: 0;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 /* =========================
-   BODY BACKGROUND (USGS PAPER + CONTOURS)
+   BODY & BACKGROUND
 ========================= */
 
 body {
-    margin: 0;
-    padding-top: 24px;
     font-family: 'Source Serif 4', serif;
-    font-size: 16px;
+    color: #2f2f2b;
     line-height: 1.6;
-    color: #3c3b36;
+    padding-top: 72px;
 
-    /* Base quad paper */
+    /* USGS paper base */
     background-color: #e6e4d9;
 
-    /* Layered background (TOP → BOTTOM) */
+    /* Contour SVG overlay */
     background-image:
-        url("images/San Tan Regional Park.svg"), /* contour lines */
-        radial-gradient(ellipse at top, rgba(255,255,255,0.06), transparent 60%),
-        radial-gradient(ellipse at bottom, rgba(0,0,0,0.12), transparent 70%);
+        url("images/San Tan Regional Park.svg"),
+        radial-gradient(circle at top, rgba(255,255,255,0.6), transparent 60%),
+        radial-gradient(circle at bottom, rgba(0,0,0,0.12), transparent 70%);
 
     background-repeat: repeat, no-repeat, no-repeat;
-    background-size: 600px auto, cover, cover;
+    background-size: 600px, cover, cover;
     background-position: top left, center, center;
-}
-
-/* Subtle paper texture */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.06;
-    background-image:
-        repeating-linear-gradient(
-            0deg,
-            rgba(120, 110, 90, 0.15),
-            rgba(120, 110, 90, 0.15) 1px,
-            transparent 1px,
-            transparent 22px
-        );
-    z-index: 0;
 }
 
 /* =========================
@@ -62,62 +38,17 @@ body::before {
 
 h1, h2, h3 {
     font-family: 'Libre Franklin', sans-serif;
-    line-height: 1.25;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: #1f2922;
 }
 
-h1 { font-size: 2.6rem; }
-h2 { font-size: 1.6rem; margin-bottom: 1rem; }
-h3 { font-size: 1.2rem; }
-
-p, li, a {
-    font-family: 'Source Serif 4', serif;
-    color: #3c3b36;
-}
-
-.image-info {
-    color: #5c5b4f;
-    font-size: 0.95rem;
-    margin-top: 0.6rem;
+p, a {
+    color: #2f2f2b;
 }
 
 /* =========================
-   LAYOUT
-========================= */
-
-section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 3rem 1.75rem;
-    background: rgba(255, 255, 255, 0.55);
-    border-radius: 10px;
-    box-shadow:
-        0 10px 24px rgba(0,0,0,0.25),
-        inset 0 1px 0 rgba(255,255,255,0.6);
-    position: relative;
-    z-index: 1;
-}
-
-/* =========================
-   HERO SECTION
-========================= */
-
-#home {
-    min-height: calc(100vh - 96px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-#home h1 { font-size: 2.8rem; }
-#home h2 { font-size: 1.5rem; }
-
-/* =========================
-   TOP NAVIGATION
+   TOP NAV BAR
 ========================= */
 
 .top-bar {
@@ -126,29 +57,28 @@ section {
     left: 0;
     width: 100%;
     height: 64px;
-    background-color: rgba(31, 41, 34, 0.95);
+    background: rgba(0,0,0,0.82);
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 0 24px;
     z-index: 10000;
-    overflow: visible;
 }
 
 .title {
-    font-size: 1.6rem;
+    color: #f4f6f2;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: #f5f4ee;
 }
 
 /* =========================
-   NAVBAR & DROPDOWN
+   NAVBAR
 ========================= */
 
 .navbar {
     list-style: none;
     display: flex;
-    gap: 18px;
+    gap: 24px;
 }
 
 .navbar li {
@@ -156,73 +86,58 @@ section {
 }
 
 .navbar a {
-    color: #f5f4ee;
+    color: #f4f6f2;
     text-decoration: none;
     font-weight: 600;
-    padding: 6px 10px;
-    border-radius: 4px;
+    padding: 6px 8px;
 }
 
-.navbar a:hover {
-    background-color: rgba(200, 106, 58, 0.8);
-    color: #1f2922;
-}
+/* =========================
+   DROPDOWN
+========================= */
 
-/* Dropdown */
 .dropdown-menu {
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
-
-    background-color: #1f2922;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 6px;
-
+    background: rgba(0,0,0,0.92);
     min-width: 220px;
+    border-radius: 6px;
     padding: 6px 0;
-
-    display: none;
-    z-index: 10001;
 }
 
 .dropdown-menu li a {
     display: block;
     padding: 10px 16px;
-    color: #f5f4ee;
+    color: #ffffff;
 }
 
 .dropdown-menu li a:hover {
-    background-color: #c86a3a;
-    color: #1f2922;
+    background: rgba(180,190,160,0.8);
+    color: #000;
 }
 
 /* Desktop hover */
-.navbar li.dropdown:hover > .dropdown-menu {
+.dropdown:hover .dropdown-menu {
     display: block;
 }
 
 /* Mobile toggle */
-@media (max-width: 768px) {
-    .top-bar {
-        flex-direction: column;
-        height: auto;
-        padding: 12px;
-    }
+.dropdown.open .dropdown-menu {
+    display: block;
+}
 
-    .navbar {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+/* =========================
+   SECTIONS
+========================= */
 
-    .dropdown-menu {
-        position: static;
-        display: none;
-        margin-top: 8px;
-    }
-
-    .dropdown.open .dropdown-menu {
-        display: block;
-    }
+section {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 3rem 2rem;
+    background: rgba(255,255,255,0.55);
+    border-radius: 10px;
 }
 
 /* =========================
@@ -232,75 +147,26 @@ section {
 .portfolio-categories {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 48px;
-    margin-top: 3rem;
-}
-
-@media (max-width: 900px) {
-    .portfolio-categories {
-        grid-template-columns: 1fr;
-    }
-}
-
-.category-card {
-    text-decoration: none;
-    text-align: center;
-    color: #3c3b36;
-    transition: transform 0.2s ease;
+    gap: 40px;
 }
 
 .category-card img {
     width: 100%;
     height: auto;
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.category-card:hover {
-    transform: scale(1.04);
+    border-radius: 6px;
 }
 
 /* =========================
-   MAP GALLERY (USGS QUAD STYLE)
+   RESPONSIVE
 ========================= */
 
-.image-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 48px;
-    justify-content: center;
-}
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
 
-.image-container {
-    flex: 1 1 45%;
-    max-width: 45%;
-    border: 2px solid #c8c3b2;
-    padding: 4px;
-    background: #f8f7f2;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-}
-
-.map-zoom {
-    overflow: hidden;
-    cursor: zoom-in;
-}
-
-.map-zoom img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.15s ease-out;
-}
-
-/* =========================
-   CONTACT & RESUME
-========================= */
-
-#contact, #resume {
-    max-width: 700px;
-}
-
-#contact a, #resume a {
-    color: #1f2922;
-    font-weight: 600;
+    .dropdown-menu {
+        position: static;
+    }
 }

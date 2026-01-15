@@ -135,8 +135,8 @@ section {
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
-    z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    z-index: 9999;
+    overflow: visible; /* 🔑 REQUIRED */
 }
 
 .title {

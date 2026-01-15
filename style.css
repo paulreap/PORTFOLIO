@@ -17,16 +17,9 @@ body {
     font-size: 16px;
     line-height: 1.6;
     color: #ffffff;
-    background: linear-gradient(
-        -45deg,
-        #7A5C42,
-        #A3B18A,
-        #588157,
-        #3A5A40,
-        #2C6E91
-    );
-    background-size: 400% 400%;
-    animation: gradientEarthtone 20s ease infinite;
+
+    /* Sleek static background */
+    background-color: #1f2a24;
 }
 
 /* =========================
@@ -289,12 +282,3 @@ section {
     }
 }
 
-/* =========================
-   BACKGROUND ANIMATION
-========================= */
-
-@keyframes gradientEarthtone {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}

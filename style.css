@@ -36,13 +36,29 @@ zoomContainers.forEach(container => {
 });
 </script>
 
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.15),
+            rgba(255,255,255,0.15) 1px,
+            transparent 1px,
+            transparent 14px
+        );
+}
 body {
     margin: 0;
     padding-top: 48px;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: #f5f5f2;
+    color: #b8c7ac;
 
     body {
     margin: 0;
@@ -71,22 +87,7 @@ body {
         );
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.06;
 
-    background-image:
-        repeating-linear-gradient(
-            0deg,
-            rgba(255,255,255,0.15),
-            rgba(255,255,255,0.15) 1px,
-            transparent 1px,
-            transparent 14px
-        );
-}
 
 /* =========================
    TYPOGRAPHY
@@ -120,7 +121,7 @@ body, p, li, a {
 p {
     font-size: 1rem;
     max-width: 65ch;
-    color: #e8e8e2;
+    color: #94ac8b;
 }
 
 .scale-divider {
@@ -130,8 +131,8 @@ p {
     background:
         repeating-linear-gradient(
             to right,
-            #cfd8c3,
-            #cfd8c3 20px,
+            #f1f1f0,
+            #ececeb 20px,
             transparent 20px,
             transparent 30px
         );
@@ -177,7 +178,7 @@ section {
 .title {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #f5f8f3;
     white-space: nowrap;
 }
 

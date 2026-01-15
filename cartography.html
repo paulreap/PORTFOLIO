@@ -82,6 +82,33 @@
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const zoomContainers = document.querySelectorAll('.map-zoom');
+    const scale = 1.3; // adjust zoom level for maps
+
+    zoomContainers.forEach(container => {
+        const img = container.querySelector('img');
+
+        container.addEventListener('mousemove', e => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const xPercent = x / rect.width * 100;
+            const yPercent = y / rect.height * 100;
+
+            img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+            img.style.transform = `scale(${scale})`;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            img.style.transform = 'scale(1)';
+            img.style.transformOrigin = 'center center';
+        });
+    });
+});
+</script>
 
 </body>
 </html>

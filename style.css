@@ -10,6 +10,32 @@ html {
     scroll-behavior: smooth;
 }
 
+<script>
+const zoomContainers = document.querySelectorAll('.map-zoom');
+
+zoomContainers.forEach(container => {
+    const img = container.querySelector('img');
+    const scale = 1.5; // zoom factor
+
+    container.addEventListener('mousemove', e => {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left; // mouse x relative to container
+        const y = e.clientY - rect.top;  // mouse y relative to container
+
+        const xPercent = x / rect.width * 100;
+        const yPercent = y / rect.height * 100;
+
+        img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+        img.style.transform = `scale(${scale})`;
+    });
+
+    container.addEventListener('mouseleave', () => {
+        img.style.transform = 'scale(1)';
+        img.style.transformOrigin = 'center center';
+    });
+});
+</script>
+
 body {
     margin: 0;
     padding-top: 48px;
@@ -293,7 +319,6 @@ section {
    PORTFOLIO MAP ZOOM
 ========================= */
 
-/* Portfolio gallery */
 .image-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -304,34 +329,32 @@ section {
 .image-container {
     flex: 1 1 45%;
     max-width: 45%;
-    border: 2px solid #ccc9b6; /* USGS quad border */
+    border: 2px solid #ccc9b6;
     border-radius: 4px;
     padding: 4px;
     box-shadow: 0 6px 12px rgba(0,0,0,0.25);
     background: #f8f7f2;
-    overflow: hidden; /* ensures image zoom doesn't overflow container */
+    overflow: hidden;
+    position: relative; /* important for magnifier */
 }
 
 .map-zoom {
     overflow: hidden;
     border-radius: 2px;
     background-color: #f8f7f2;
+    cursor: zoom-in;
 }
 
 .map-zoom img {
     width: 100%;
     height: auto;
-    transform: scale(1); /* default scale = normal */
-    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-/* Hover zoom — only on hover */
-.image-container:hover .map-zoom img {
-    transform: scale(1.25); /* subtle magnification */
+    transform: scale(1);
+    transform-origin: top left; /* important for cursor tracking */
+    transition: transform 0.1s ease-out;
 }
 
 .image-info {
-    color: #5c5b4f; /* USGS caption color */
+    color: #5c5b4f;
     font-size: 0.95rem;
     margin-top: 0.6rem;
     line-height: 1.4;

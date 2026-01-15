@@ -12,50 +12,48 @@ html {
     scroll-behavior: smooth;
 }
 
+/* =========================
+   BODY BACKGROUND (USGS PAPER + CONTOURS)
+========================= */
+
 body {
     margin: 0;
     padding-top: 24px;
     font-family: 'Source Serif 4', serif;
     font-size: 16px;
     line-height: 1.6;
-    color: #3c3b36; /* text readable on clay background */
+    color: #3c3b36;
 
-    /* Clay dirt base color */
-    background-color: #b85c38; /* burnt orange / red clay */
+    /* Base quad paper */
+    background-color: #e6e4d9;
 
-    /* Contour lines overlay */
-       background-image: url('images/San\ Tan\ Regional\ Park.svg'); /* path to your SVG */
-    background-repeat: repeat;
-    background-size: contain; /* keeps SVG proportional */
-    background-position: top left;
-
-
-    /* USGS-style terrain paper background */
-    background-color: #e6e4d9; /* light quad paper */
+    /* Layered background (TOP → BOTTOM) */
     background-image:
-        radial-gradient(ellipse at top, rgba(255, 255, 255, 0.05), transparent 60%),
-        radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.1), transparent 70%);
-    background-repeat: no-repeat;
-    background-size: cover;
+        url("images/San Tan Regional Park.svg"), /* contour lines */
+        radial-gradient(ellipse at top, rgba(255,255,255,0.06), transparent 60%),
+        radial-gradient(ellipse at bottom, rgba(0,0,0,0.12), transparent 70%);
 
-    color: #3c3b36; /* default body text dark for readability */
+    background-repeat: repeat, no-repeat, no-repeat;
+    background-size: 600px auto, cover, cover;
+    background-position: top left, center, center;
 }
 
-/* Subtle texture overlay */
+/* Subtle paper texture */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     pointer-events: none;
-    opacity: 0.08; /* subtle */
+    opacity: 0.06;
     background-image:
         repeating-linear-gradient(
             0deg,
-            rgba(255, 180, 120, 0.08) 0px,
-            rgba(255, 180, 120, 0.08) 1px,
+            rgba(120, 110, 90, 0.15),
+            rgba(120, 110, 90, 0.15) 1px,
             transparent 1px,
-            transparent 25px
+            transparent 22px
         );
+    z-index: 0;
 }
 
 /* =========================
@@ -64,11 +62,10 @@ body::before {
 
 h1, h2, h3 {
     font-family: 'Libre Franklin', sans-serif;
-    margin-top: 0;
     line-height: 1.25;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #1f2922; /* USGS title dark green-brown */
+    color: #1f2922;
 }
 
 h1 { font-size: 2.6rem; }
@@ -77,14 +74,13 @@ h3 { font-size: 1.2rem; }
 
 p, li, a {
     font-family: 'Source Serif 4', serif;
-    color: #3c3b36; /* readable on light background */
+    color: #3c3b36;
 }
 
 .image-info {
-    color: #5c5b4f; /* USGS caption tone */
+    color: #5c5b4f;
     font-size: 0.95rem;
     margin-top: 0.6rem;
-    line-height: 1.4;
 }
 
 /* =========================
@@ -95,30 +91,30 @@ section {
     max-width: 1100px;
     margin: 0 auto;
     padding: 3rem 1.75rem;
-    background: rgba(255, 255, 255, 0.035);
+    background: rgba(255, 255, 255, 0.55);
     border-radius: 10px;
     box-shadow:
-        0 10px 24px rgba(0,0,0,0.35),
-        inset 0 1px 0 rgba(255,255,255,0.05);
+        0 10px 24px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+    position: relative;
+    z-index: 1;
 }
 
 /* =========================
-   HERO SECTION (HOME)
+   HERO SECTION
 ========================= */
 
 #home {
-    min-height: calc(100vh - 96px); /* account for fixed header */
+    min-height: calc(100vh - 96px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 0;
 }
 
-#home h1 { font-size: 2.8rem; margin-bottom: 0.5rem; }
-#home h2 { font-size: 1.5rem; font-weight: 600; color: #1f2922; }
-#home p { font-size: 1.05rem; margin-top: 1rem; }
+#home h1 { font-size: 2.8rem; }
+#home h2 { font-size: 1.5rem; }
 
 /* =========================
    TOP NAVIGATION
@@ -130,100 +126,126 @@ section {
     left: 0;
     width: 100%;
     height: 64px;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(31, 41, 34, 0.95);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
-    z-index: 9999;
-    overflow: visible; /* 🔑 REQUIRED */
+    z-index: 10000;
+    overflow: visible;
 }
 
 .title {
     font-size: 1.6rem;
     font-weight: 700;
-    color: #f5f8f3;
-    white-space: nowrap;
+    color: #f5f4ee;
 }
 
 /* =========================
-   DROPDOWN NAVIGATION
+   NAVBAR & DROPDOWN
 ========================= */
 
-.navbar li {
-    position: relative; /* required for absolute submenu positioning */
+.navbar {
+    list-style: none;
+    display: flex;
+    gap: 18px;
 }
 
+.navbar li {
+    position: relative;
+}
+
+.navbar a {
+    color: #f5f4ee;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.navbar a:hover {
+    background-color: rgba(200, 106, 58, 0.8);
+    color: #1f2922;
+}
+
+/* Dropdown */
 .dropdown-menu {
     position: absolute;
-    top: 100%;  /* below parent */
+    top: 100%;
     left: 0;
-    background-color: rgba(0,0,0,0.9);
-    padding: 6px 0;
+
+    background-color: #1f2922;
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 6px;
-    min-width: 200px;
-    display: none;   /* hidden by default */
-    z-index: 1000;
+
+    min-width: 220px;
+    padding: 6px 0;
+
+    display: none;
+    z-index: 10001;
 }
 
 .dropdown-menu li a {
     display: block;
-    padding: 8px 16px;
-    font-size: 0.95rem;
-    color: #ffffff;
-    text-decoration: none;
+    padding: 10px 16px;
+    color: #f5f4ee;
 }
 
 .dropdown-menu li a:hover {
-    background-color: rgba(163,177,138,0.8);
-    color: #000;
+    background-color: #c86a3a;
+    color: #1f2922;
 }
 
-/* Show menu on hover for desktop */
-.navbar li.dropdown:hover .dropdown-menu {
+/* Desktop hover */
+.navbar li.dropdown:hover > .dropdown-menu {
     display: block;
 }
 
-/* Mobile: make dropdown clickable */
+/* Mobile toggle */
 @media (max-width: 768px) {
-    .dropdown > a::after {
-        content: " ▾";
-        float: right;
+    .top-bar {
+        flex-direction: column;
+        height: auto;
+        padding: 12px;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .dropdown-menu {
         position: static;
         display: none;
         margin-top: 8px;
-        background-color: rgba(0,0,0,0.9);
     }
 
     .dropdown.open .dropdown-menu {
         display: block;
     }
 }
+
 /* =========================
    PORTFOLIO CATEGORIES
 ========================= */
 
 .portfolio-categories {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* all side by side */
+    grid-template-columns: repeat(3, 1fr);
     gap: 48px;
     margin-top: 3rem;
 }
 
 @media (max-width: 900px) {
-    .portfolio-categories { grid-template-columns: 1fr; }
+    .portfolio-categories {
+        grid-template-columns: 1fr;
+    }
 }
 
 .category-card {
     text-decoration: none;
-    color: #3c3b36;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    color: #3c3b36;
     transition: transform 0.2s ease;
 }
 
@@ -235,15 +257,12 @@ section {
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-.category-card h3 {
-    margin-top: 0.75rem;
-    font-size: 1.2rem;
+.category-card:hover {
+    transform: scale(1.04);
 }
 
-.category-card:hover { transform: scale(1.04); }
-
 /* =========================
-   PORTFOLIO MAPS (USGS Quad Style + Hover Zoom)
+   MAP GALLERY (USGS QUAD STYLE)
 ========================= */
 
 .image-gallery {
@@ -256,55 +275,32 @@ section {
 .image-container {
     flex: 1 1 45%;
     max-width: 45%;
-    border: 2px solid #ccc9b6; /* USGS quad border */
-    border-radius: 4px;
+    border: 2px solid #c8c3b2;
     padding: 4px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
     background: #f8f7f2;
-    overflow: hidden;
-    position: relative;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
 }
 
 .map-zoom {
     overflow: hidden;
-    border-radius: 2px;
-    background-color: #f8f7f2;
     cursor: zoom-in;
 }
 
 .map-zoom img {
     width: 100%;
     height: auto;
-    transform: scale(1);
-    transform-origin: center center;
-    transition: transform 0.1s ease-out;
-}
-
-@media (max-width: 900px) {
-    .image-container { flex: 1 1 100%; max-width: 100%; }
+    transition: transform 0.15s ease-out;
 }
 
 /* =========================
    CONTACT & RESUME
 ========================= */
 
-#contact, #resume { max-width: 700px; }
-
-#contact a, #resume a {
-    color: #5c5b4f;
-    text-decoration: none;
-    font-weight: 600;
+#contact, #resume {
+    max-width: 700px;
 }
 
-#contact a:hover, #resume a:hover { text-decoration: underline; }
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 768px) {
-    body { padding-top: 120px; }
-    .top-bar { flex-direction: column; height: auto; padding: 12px; gap: 8px; }
-    .navbar { flex-wrap: wrap; justify-content: center; }
-    #home h1 { font-size: 2.2rem; }
+#contact a, #resume a {
+    color: #1f2922;
+    font-weight: 600;
 }

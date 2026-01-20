@@ -28,8 +28,8 @@ body {
         radial-gradient(circle at bottom, rgba(0,0,0,0.12), transparent 70%);
 
     background-repeat: no-repeat;
-    background-size: 65vw auto, cover, cover;
-    background-position: center 45%, center, center;
+    background-size: 70vw auto, cover, cover;
+    background-position: center 48%, center, center;
 }
 
 /* =========================
